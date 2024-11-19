@@ -1,9 +1,14 @@
-using TheVault.Domain.Boxes.Entities;
+using TheVault.API.Configure;
+using TheVault.API.Interfaces;
 using TheVault.Persistence;
-using TheVault.Persistence.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistence(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+// Register all IEndpoints implementations
+builder.Services.AddEndpoints();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -19,29 +24,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/api/boxes", (AppDataContext context) =>
-    {
-        var box = new Box("Box 1", "Living Room", "A box in the living room");
-        box.AddItem(new Item("Item 1", "A thing"));
-        box.AddItem(new Item("Item 2", "Another thing"));
-        context.Boxes.Add(box);
-        context.SaveChanges();
-
-        var results = context.Boxes.ToList();
-
-        return Results.Ok(results);
-
-    })
-    .WithName("GetBoxes");
-
-app.MapGet("/api/boxes/add-item", (AppDataContext context) =>
-    {
-        var box = context.Boxes.First();
-
-        return Results.Ok(box);
-
-    })
-    .WithName("GetBox");
+// Register all endpoints
+var endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoints>>();
+foreach (var endpoint in endpoints)
+{
+    endpoint.DefineEndpoint(app);
+}
 
 app.Run();
 

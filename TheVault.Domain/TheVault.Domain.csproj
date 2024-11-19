@@ -9,7 +9,6 @@
     <ItemGroup>
       <Folder Include="Boxes\Aggregates\" />
       <Folder Include="Boxes\Events\" />
-      <Folder Include="Boxes\Interfaces\" />
       <Folder Include="Boxes\ValueObjects\" />
     </ItemGroup>
 
