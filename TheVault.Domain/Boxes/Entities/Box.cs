@@ -23,9 +23,13 @@ public sealed class Box : Entity, IAggregateRoot
         Items = new List<Item>();
     }
 
-    public void AddItem(Item item)
+    public void SetItems(IList<Item> items)
     {
-        // todo: add validation
-        Items.Add(item);
+        //todo: add validation before clear and save?
+        Items.Clear();
+        foreach (var item in items)
+        {
+            Items.Add(item);
+        }
     }
 }
