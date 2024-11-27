@@ -8,28 +8,53 @@ public sealed class Box : Entity, IAggregateRoot
     public string Label { get; private set; }
     public string? Description { get; private set; }
     public string Location { get; private set; }
-    public ICollection<Item> Items { get; private set; }
+    public List<Item> Items { get; private set; }
 
     private Box()
     {
+
     }
 
     public Box(string label, string location, string? description = null)
     {
-        // todo: add validation
+        AssertValidLabel(label);
+        AssertValidLocation(location);
+
         Label = label;
         Location = location;
         Description = description;
-        Items = new List<Item>();
+        Items = [];
     }
 
     public void SetItems(IList<Item> items)
     {
-        //todo: add validation before clear and save?
-        Items.Clear();
-        foreach (var item in items)
+        if (items is null)
         {
-            Items.Add(item);
+            throw new ArgumentNullException(nameof(items), "Items cannot not be null");
+        }
+
+        if (!items.Any())
+        {
+            throw new ArgumentException("Items must contain values", nameof(items));
+        }
+
+        Items.Clear();
+        Items.AddRange(items);
+    }
+
+    private static void AssertValidLabel(string label)
+    {
+        if (string.IsNullOrWhiteSpace(label))
+        {
+            throw new ArgumentException("Label must not be empty", nameof(label));
+        }
+    }
+
+    private static void AssertValidLocation(string location)
+    {
+        if (string.IsNullOrWhiteSpace(location))
+        {
+            throw new ArgumentException("Location must not be empty", nameof(location));
         }
     }
 }

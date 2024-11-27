@@ -1,4 +1,5 @@
 using MediatR;
+using TheVault.Domain.Boxes.Entities;
 
 namespace TheVault.API.features.Boxes.UpdateBox;
 
@@ -14,6 +15,6 @@ public class UpdateBoxCommand : IRequest
     {
         public string Name { get; set; }
         public string? Barcode { get; set; }
-        public decimal? Quantity { get; set; }
+        public Quantity Quantity { get; set; }
     }
 }

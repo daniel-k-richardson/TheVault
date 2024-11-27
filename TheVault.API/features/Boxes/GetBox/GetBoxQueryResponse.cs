@@ -14,7 +14,7 @@ public record GetBoxQueryResponse
     {
         public string Name { get; set; }
         public string? Barcode { get; set; }
-        public decimal? Quantity { get; set; }
+        public Quantity Quantity { get; set; }
     }
 
     public static GetBoxQueryResponse BoxMapper(Box box)

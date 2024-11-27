@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheVault.Domain", "TheVault
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheVault.Persistence", "TheVault.Persistence\TheVault.Persistence.csproj", "{052CCCF4-9321-45F2-8F12-9D447B758E10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheVault.UnitTest.UnitTest", "TheVault.UnitTest.UnitTest\TheVault.UnitTest.UnitTest.csproj", "{00091FCF-C585-4411-BBC0-37DC31264706}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,7 @@ Global
 		{5583E99E-685C-43CE-83D7-8C69DFA0BE74} = {49F291CF-6CC6-4E3F-AB86-CB42EC64D13F}
 		{AD110F7A-FA6B-4EE4-A760-725564796DEE} = {49F291CF-6CC6-4E3F-AB86-CB42EC64D13F}
 		{052CCCF4-9321-45F2-8F12-9D447B758E10} = {49F291CF-6CC6-4E3F-AB86-CB42EC64D13F}
+		{00091FCF-C585-4411-BBC0-37DC31264706} = {2206CA85-1740-41CA-B087-6908EBF1261B}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5583E99E-685C-43CE-83D7-8C69DFA0BE74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -33,5 +36,9 @@ Global
 		{052CCCF4-9321-45F2-8F12-9D447B758E10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{052CCCF4-9321-45F2-8F12-9D447B758E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{052CCCF4-9321-45F2-8F12-9D447B758E10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00091FCF-C585-4411-BBC0-37DC31264706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00091FCF-C585-4411-BBC0-37DC31264706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00091FCF-C585-4411-BBC0-37DC31264706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00091FCF-C585-4411-BBC0-37DC31264706}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

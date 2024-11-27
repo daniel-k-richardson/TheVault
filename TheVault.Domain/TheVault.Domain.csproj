@@ -6,10 +6,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Boxes\Aggregates\" />
-      <Folder Include="Boxes\Events\" />
-      <Folder Include="Boxes\ValueObjects\" />
-    </ItemGroup>
-
 </Project>

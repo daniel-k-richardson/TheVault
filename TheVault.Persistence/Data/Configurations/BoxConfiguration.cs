@@ -13,9 +13,19 @@ public class BoxConfiguration : IEntityTypeConfiguration<Box>
         builder.Property(b => b.Location);
         builder.Property(b => b.Description);
 
-        builder.HasMany(b => b.Items)
-            .WithOne()
-            .HasForeignKey("BoxId");
+        builder.OwnsMany(b => b.Items, x =>
+        {
+            x.ToTable("Items");
+            x.Property<int>("Id");
+            x.HasKey("Id");
+            x.WithOwner().HasForeignKey("BoxId");
+
+            x.OwnsOne(i => i.Quantity, q =>
+            {
+                q.Property(y => y.Value).HasPrecision(18, 2);
+                q.Property(y => y.QuantityType);
+            });
+        });
 
         builder.Navigation(x => x.Items)
             .AutoInclude();
